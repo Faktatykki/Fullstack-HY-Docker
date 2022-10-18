@@ -31,14 +31,14 @@ services:
       - ./todo-backend:/usr/src/app  
     environment:
       - REDIS_URL=redis://redis:6379
-      - MONGO_URL=mongodb://the_username:the_password@localhost:27017/the_database
+      - MONGO_URL=mongodb://the_username:the_password@mongo:27017/the_database
     depends_on:
       - "mongo"
       - "redis"
   mongo:
      image: mongo
      ports:
-       - 3456:27017
+       - 27017:27017
      environment:
        MONGO_INITDB_ROOT_USERNAME: root
        MONGO_INITDB_ROOT_PASSWORD: example
