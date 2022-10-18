@@ -1,0 +1,92 @@
+Script started on 2022-10-13 17:19:21+03:00 [TERM="xterm-256color" TTY="/dev/pts/4" COLUMNS="203" LINES="53"]
+]0;samkaari@lx0-fuxi054: ~/Documents/FullStack/FullStack-HY-osa12/part12-containers-applications/script-answers[01;32msamkaari@lx0-fuxi054[00m:[01;34m~/Documents/FullStack/FullStack-HY-osa12/part12-containers-applications/script-answers[00m$ docker exec -it [K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kcon[K[K[Kdocker container ls
+CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS                                         NAMES
+105ecd5a6975   mongo     "docker-entrypoint.s…"   25 minutes ago   Up 20 minutes   0.0.0.0:3456->27017/tcp, :::3456->27017/tcp   todo-backend_mongo_1
+61e2e9d97244   nginx     "/docker-entrypoint.…"   33 minutes ago   Up 33 minutes   0.0.0.0:8080->80/tcp, :::8080->80/tcp         zen_diffie
+4360d932f100   nginx     "/docker-entrypoint.…"   35 minutes ago   Up 35 minutes   80/tcp                                        amazing_hypatia
+]0;samkaari@lx0-fuxi054: ~/Documents/FullStack/FullStack-HY-osa12/part12-containers-applications/script-answers[01;32msamkaari@lx0-fuxi054[00m:[01;34m~/Documents/FullStack/FullStack-HY-osa12/part12-containers-applications/script-answers[00m$ docker[K[K[K[K[K[Kscri[K[K[K[Kdocker exec -it todo-backend_mongo_1 
+"docker exec" requires at least 2 arguments.
+See 'docker exec --help'.
+
+Usage:  docker exec [OPTIONS] CONTAINER COMMAND [ARG...]
+
+Run a command in a running container
+]0;samkaari@lx0-fuxi054: ~/Documents/FullStack/FullStack-HY-osa12/part12-containers-applications/script-answers[01;32msamkaari@lx0-fuxi054[00m:[01;34m~/Documents/FullStack/FullStack-HY-osa12/part12-containers-applications/script-answers[00m$ docker exec -it todo-backend_mongo_1 bash
+root@105ecd5a6975:/# [Kroot@105ecd5a6975:/# mongosh -u - root -p example
+]0;mongosh mongodb://<credentials>@127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000Current Mongosh Log ID:	63481e9e8ce832c0c52d1cca
+Connecting to:		[1m[32mmongodb://<credentials>@127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.6.0[0m
+Using MongoDB:		6.0.2
+[1m[33mUsing Mongosh[0m:		1.6.0
+
+For mongosh info see: [1mhttps://docs.mongodb.com/mongodb-shell/[0m
+
+[1G[0J [1G[1m[33m------[0m
+   [1m[33mThe server generated these startup warnings when booting[0m
+   2022-10-13T13:59:02.793+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+   2022-10-13T13:59:03.525+00:00: Soft rlimits for open file descriptors too low
+[1m[33m------[0m
+
+[1m[33m------[0m
+   Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+   metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+   
+   The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+   and anyone you share the URL with. MongoDB may use this information to make product
+   improvements and to suggest MongoDB products and deployment options to you.
+   
+   To enable free monitoring, run the following command: db.enableFreeMonitoring()
+   To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+[1m[33m------[0m
+
+[1G[0Jtest> [7Gshow dbs
+[1madmin[0m         100.00 KiB
+[1mconfig[0m        108.00 KiB
+[1mlocal[0m          72.00 KiB
+[1mthe_database[0m   72.00 KiB
+[1G[0Jtest> [7Guse the_database
+switched to db the_database
+[1G[0Jthe_database> [15Gshow todos[1G[0Jthe_database> show todo[24G[1G[0Jthe_database> show tod[23G[1G[0Jthe_database> show to[22G[1G[0Jthe_database> show t[21G[1G[0Jthe_database> show [20Gcollections
+[1mtodos[0m
+[1G[0Jthe_database> [15Gdb.todos.find([[1G[0Jthe_database> db.todos.find([29G{})
+[
+  {
+    _id: ObjectId("63481899a6e216978c08e89c"),
+    text: [32m'Write code'[39m,
+    done: [33mtrue[39m
+  },
+  {
+    _id: ObjectId("63481899a6e216978c08e89d"),
+    text: [32m'Learn about containers'[39m,
+    done: [33mfalse[39m
+  }
+]
+[1G[0Jthe_database> [15Gdb.todos.insertOne({text[33mtext[39m:[32m"[39m[32mI[39m[32mn[39m[32mc[39m[32mr[39m[32me[39m[32ma[39m[32ms[39m[32me[39m [32mt[39m[32mh[39m[32me[39m [32mn[39m[32mu[39m[32mm[39m[32mb[39m[32me[39m[32mr[39m [32mo[39m[32mf[39m [32mt[39m[32mo[39m[32mo[39m[32ml[39m[32ms[39m [32mi[39m[32mn[39m [32mm[39m[32my[39m [32mt[39m[32mo[39m[32mo[39m[32ml[39m[32mb[39m[32me[39m[32ml[39m[32mt[39m[32m"[39m, d[36mdo[39mdone[33mdone[39m: fals[33mfalse[39m})
+{
+  acknowledged: [33mtrue[39m,
+  insertedId: ObjectId("63481eda99040520a551db56")
+}
+[1G[0Jthe_database> [15G[1G[0Jthe_database> db.todos.insertOne({[33mtext[39m:[32m"Increase the number of tools in my toolbelt"[39m, [33mdone[39m: [33mfalse[39m})[100G[1G[0Jthe_database> db.todos.find({})[32G
+[
+  {
+    _id: ObjectId("63481899a6e216978c08e89c"),
+    text: [32m'Write code'[39m,
+    done: [33mtrue[39m
+  },
+  {
+    _id: ObjectId("63481899a6e216978c08e89d"),
+    text: [32m'Learn about containers'[39m,
+    done: [33mfalse[39m
+  },
+  {
+    _id: ObjectId("63481eda99040520a551db56"),
+    text: [32m'Increase the number of tools in my toolbelt'[39m,
+    done: [33mfalse[39m
+  }
+]
+[1G[0Jthe_database> [15Gexit
+root@105ecd5a6975:/# exit
+exit
+]0;samkaari@lx0-fuxi054: ~/Documents/FullStack/FullStack-HY-osa12/part12-containers-applications/script-answers[01;32msamkaari@lx0-fuxi054[00m:[01;34m~/Documents/FullStack/FullStack-HY-osa12/part12-containers-applications/script-answers[00m$ exit
+exit
+
+Script done on 2022-10-13 17:21:29+03:00 [COMMAND_EXIT_CODE="0"]
