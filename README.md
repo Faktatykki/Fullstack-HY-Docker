@@ -2,3 +2,5 @@
 
 ### Part 12: Containers
 
+![Certificate] (certificate-containers.png)
+
