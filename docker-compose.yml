@@ -1,0 +1,21 @@
+services: 
+  bloglist-frontend:
+    image: bloglist-frontend
+    ports:
+      - 3000:3000
+    build:
+      context: ./bloglist-frontend/
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./bloglist-frontend/:/usr/src/app
+    depends_on:
+      - bloglist-backend
+  bloglist-backend:
+    image: bloglist-backend
+    ports:
+      - 3003:3003
+    build:
+      context: ./bloglist-backend/
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./bloglist-backend/:/usr/src/app

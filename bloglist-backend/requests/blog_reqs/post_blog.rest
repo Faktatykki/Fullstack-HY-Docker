@@ -1,0 +1,10 @@
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1paWhrdWxpIiwiaWQiOiI2MTI3ODA1MTljMTc5YTFkMGNlNWM4MzAiLCJpYXQiOjE2Mjk5ODAzMTR9.4NvuHEC1CuGBO2rZ1DOwi9nYR6SiWN500qelqjiE9rw
+
+{
+    "title": "Tokenilla vahvistettu blogi",
+    "author": "Turvallinen kirjoittaja",
+    "url": "turvallinenblogi.fi",
+    "likes": 7
+}
